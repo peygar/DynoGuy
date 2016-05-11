@@ -1,54 +1,29 @@
-class Game
-{
-	Cell cells[10][60]; 
-	Cacti *cacti;
-
-	Dinosaur *dino;
-
-public:
-	Game();
-	void play(); //loop
-	~Game();
-};
-
-class Cell {
-	char state;
-	Game *currentGame; 
-public: 
-	void setState(char newState); 
-};
-
-class View {
-	char cells[10][60];
-	void print();
-};
-
-class Dinosaur {
-	int distance;
-	int qMatrix[10][10];
-	int jumpProgress;
-public:
-	void jump();
-	bool shouldJump();
-	int getHeight();
-	void jumpIfNeed();
-};
+#include "game.h"
+#include "cell.h"
+#include "dinosaur.h"
+#include "view.h"
 
 const int MAX_CACTUS_DISTANCE = 40;
 const int MIN_CACTUS_DISTANCE = 3;
 const int MAX_CACTUS_HEIGHT = 1;
 const int MIN_CACTUS_HEIGHT = 1;
 const int DINO_LOCATION = 5;
-typedef std::vector<pair<int,int> > Cacti;
 
 Game::Game() {
 	dino = new Dinosaur();
 	cacti = new Cacti;
+	view = new View; 
 }
 
 Game::~Game() {
 	delete dino;
 	delete cacti;
+	delete view; 
+}
+
+Game::notify(int row, int column, char state)
+{
+	view->notify(row, column, state); 
 }
 
 Game::createCactus() {
