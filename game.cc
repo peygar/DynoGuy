@@ -81,9 +81,10 @@ void Game::moveCacti()
 	for(vector<pair<int, int> >::iterator it = cacti->begin(); it != cacti->end(); ++it)
 	{
 		moveCactus(it->first(), it->second());
+		it->first()--; 
 	}
 
-	if(cacti->back().first == 0)
+	if(cacti->back().first == -1)
 	{
 		cacti->pop_back(); 
 	}
@@ -106,7 +107,8 @@ Game::play() {
 			dino->jump()
 		}
 
-		//move cacti
+		moveCacti(); 
+
 		dinoHeight = dino->getHeight();
 
 		if (cacti->front.first == DINO_LOCATION && dinoHeight < cacti->front.second) {
