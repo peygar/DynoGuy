@@ -13,6 +13,11 @@ class Game
 	Dinosaur *dino;
 	View *view; 
 
+	void initialize(); 
+	void createCactus();
+	void moveCactus(int location, int height);
+	void moveCacti();
+
 public:
 	Game();
 	void play(); //loop
