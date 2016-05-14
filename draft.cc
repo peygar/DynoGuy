@@ -1,4 +1,4 @@
-class Game
+/*class Game
 {
 	Cell cells[10][60]; 
 	Cacti *cacti;
@@ -86,3 +86,4 @@ Game::play() {
 		}
 	}
 }
+*/

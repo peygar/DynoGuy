@@ -3,6 +3,11 @@
 #include "dinosaur.h"
 #include "view.h"
 
+#include <iostream> 
+#include <queue> 
+
+using namespace std;
+
 const int MAX_CACTUS_DISTANCE = 40;
 const int MIN_CACTUS_DISTANCE = 3;
 const int MAX_CACTUS_HEIGHT = 1;
@@ -27,16 +32,19 @@ void Game::initialize()
 	{
 		for(int j = 0; j < 60; j++)
 		{
-			cell[i][j].setState(' ');
+			cells[i][j].setState(' ');
+			notify(i, j, ' ');
 		}
 	}
 
 	for(int i = 0; i < 60; i++)
 	{
-		cell[9][i].setState('_'); 
+		cells[9][i].setState('_'); 
+		notify(9, i, '_');
 	}
 
-	cell[9][DINO_LOCATION].setState('*'); 
+	cells[9][DINO_LOCATION].setState('*'); 
+	notify(9, DINO_LOCATION, '*');
 }
 
 void Game::notify(int row, int column, char state)
@@ -47,11 +55,11 @@ void Game::notify(int row, int column, char state)
 void Game::createCactus() 
 {
 	int height = rand() % (MAX_CACTUS_HEIGHT - MIN_CACTUS_HEIGHT + 1) + MIN_CACTUS_HEIGHT;
-	Cacti->insert(0, pair<int, int>(59, height));
+	cacti->insert(cacti->begin(), pair<int, int>(59, height));
 
 	for(int i = 0; i < height; i++)
 	{
-		cells[10 - i][59] = '#'; 
+		cells[10 - i][59].setState('#'); 
 	} 
 }
 
@@ -80,8 +88,8 @@ void Game::moveCacti()
 {
 	for(vector<pair<int, int> >::iterator it = cacti->begin(); it != cacti->end(); ++it)
 	{
-		moveCactus(it->first(), it->second());
-		it->first()--; 
+		moveCactus(it->first, it->second);
+		it->first--; 
 	}
 
 	if(cacti->back().first == -1)
@@ -92,8 +100,9 @@ void Game::moveCacti()
 
 //TODO: MOVE CACTUS
 
-Game::play() {
+void Game::play() {
 	srand(time(NULL));
+	initialize();
 
 	int distance = 0;
 	while(1) {
@@ -103,16 +112,17 @@ Game::play() {
 			createCactus();
 		}
 
-		if (kbhit()) {
-			dino->jump()
-		}
+		// if (kbhit()) {
+		// 	dino->jump();
+		// }
 
 		moveCacti(); 
 
-		dinoHeight = dino->getHeight();
+		int dinoHeight = dino->getHeight();
 
-		if (cacti->front.first == DINO_LOCATION && dinoHeight < cacti->front.second) {
-			EndGame(); 
+		if (cacti->front().first == DINO_LOCATION && dinoHeight < cacti->front().second) {
+			// EndGame(); 
 		}
+		view->print();
 	}
 }

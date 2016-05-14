@@ -6,7 +6,7 @@ class View {
 
 public: 
 	void print();
-	void notify(int row, int column, char state)
+	void notify(int row, int column, char state);
 };
 
 #endif

@@ -4,7 +4,13 @@
 class Cell; 
 class Dinosaur;
 
-typedef std::vector<pair<int,int> > Cacti;
+#include <iostream> 
+#include <vector> 
+#include "cell.h"
+
+class View;
+
+typedef std::vector<std::pair<int,int> > Cacti;
 
 class Game
 {
@@ -21,7 +27,7 @@ class Game
 public:
 	Game();
 	void play(); //loop
-	void notify(int row, int column, int state); 
+	void notify(int row, int column, char state); 
 	~Game();
 };
 

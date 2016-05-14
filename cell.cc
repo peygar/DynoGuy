@@ -1,7 +1,7 @@
 #include "cell.h"
 #include "game.h"
 
-Cell::Cell():state('$'), game(NULL)
+Cell::Cell():state('$'), currentGame(NULL)
 {}
 
 Cell::~Cell()
@@ -25,10 +25,10 @@ void Cell::setRow(int newRow)
 
 void Cell::setColumn(int newColumn)
 {
-	column - newColumn; 
+	column = newColumn; 
 }
 
 void Cell::notify()
 {
-	game->notify(row, column, state); 
+	currentGame->notify(row, column, state); 
 }

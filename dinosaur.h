@@ -7,9 +7,8 @@ class Dinosaur {
 	int jumpProgress;
 public:
 	void jump();
-	bool shouldJump();
 	int getHeight();
-	void jumpIfNeed();
+	// void jumpIfNeed();
 };
 
 #endif
