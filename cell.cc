@@ -18,18 +18,13 @@ void Cell::setGame(Game *game)
 	currentGame = game; 
 }
 
-void Cell::setRow(int newRow)
+void Cell::setCoordinates(int newRow, int newColumn)
 {
 	row = newRow; 
-}
-
-void Cell::setColumn(int newColumn)
-{
 	column = newColumn; 
 }
 
 void Cell::notify()
 {
-	if(currentGame)
-		currentGame->notify(row, column, state); 
+	currentGame->notify(row, column, state); 
 }

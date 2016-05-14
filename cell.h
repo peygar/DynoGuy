@@ -16,8 +16,10 @@ public:
 	~Cell(); 
 	void setState(char newState); 
 	void setGame(Game *game);
-	void setRow(int newRow);
-	void setColumn(int newColumn);  
+	void setCoordinates(int newRow, int newColumn);
+
+	// testing
+	char getState() {return state;}
 };
 
 #endif

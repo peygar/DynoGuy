@@ -18,16 +18,19 @@ class Game
 	Cacti *cacti;
 	Dinosaur *dino;
 	View *view; 
+	int numberOfCactiPassed;
 
 	void initialize(); 
 	void createCactus();
 	void moveCactus(int location, int height);
 	void moveCacti();
+	void setDinoJump(int height); 
+	void endGame(); 
 
 public:
 	Game();
 	void play(); //loop
-	void notify(int row, int column, char state); 
+	void notify(int row, int column, char state);
 	~Game();
 };
 
