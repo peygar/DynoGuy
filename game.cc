@@ -32,6 +32,7 @@ void Game::initialize()
 	{
 		for(int j = 0; j < 60; j++)
 		{
+			// cout << i <<  " " << j << endl;
 			cells[i][j].setState(' ');
 			notify(i, j, ' ');
 		}
@@ -44,7 +45,8 @@ void Game::initialize()
 	}
 
 	cells[9][DINO_LOCATION].setState('*'); 
-	notify(9, DINO_LOCATION, '*');
+
+	notify(9, DINO_LOCATION, '*'); 
 }
 
 void Game::notify(int row, int column, char state)
@@ -59,7 +61,7 @@ void Game::createCactus()
 
 	for(int i = 0; i < height; i++)
 	{
-		cells[10 - i][59].setState('#'); 
+		cells[9 - i][59].setState('#'); 
 	} 
 }
 
@@ -101,9 +103,11 @@ void Game::moveCacti()
 //TODO: MOVE CACTUS
 
 void Game::play() {
-	srand(time(NULL));
-	initialize();
 
+	srand(time(NULL));
+	
+	initialize();
+	
 	int distance = 0;
 	while(1) {
 		if (distance == 0)
@@ -125,4 +129,5 @@ void Game::play() {
 		}
 		view->print();
 	}
+	
 }

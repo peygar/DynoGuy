@@ -30,5 +30,6 @@ void Cell::setColumn(int newColumn)
 
 void Cell::notify()
 {
-	currentGame->notify(row, column, state); 
+	if(currentGame)
+		currentGame->notify(row, column, state); 
 }
