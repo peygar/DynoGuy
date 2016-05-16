@@ -5,7 +5,7 @@ In this implementation, the dinosaur is controlled by a machine learning AI, whi
 
 See it in action here: 
 
-[![ScreenShot](https://drive.google.com/thumbnail?id=0B9y-KG5ruJficFF2WWF0eTNaVk0&authuser=0&v=1463422490251&sz=w320-h200-p-k-nu)](https://drive.google.com/open?id=0B9y-KG5ruJficFF2WWF0eTNaVk0)
+[![ScreenShot](Screenshots/DynoGuy.gif]
 
 When the dinosaur intersects the cacti (and becomes an @), it represents a player loss, or failure. 
 A negative incentive is updated in the QArray, and thus the dinosaur learns how to jump over the cacti after a few trials. 
